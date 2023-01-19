@@ -1,25 +1,24 @@
-import logo from './logo.svg';
+
 import './App.css';
+import AddUser from './components/AddUser';
+import User from './components/User';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import UserEditPage from './components/UserEditPage';
+import Navbar from './components/Navbar';
 
 function App() {
+  // const id = localStorage.getItem("id");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Navbar />
+      <Routes>
+        <Route index element={<User/>}/>
+        <Route path='/user' element={<User />} />
+        <Route path='/user/add' element={<AddUser />} />
+        <Route path={"/user/edit/:id"} element={<UserEditPage />} />
+      </Routes>
+    </>
+    )
 }
 
 export default App;
