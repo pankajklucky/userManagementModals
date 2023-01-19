@@ -3,13 +3,15 @@ import { Navigate } from "react-router-dom";
 import { createUser } from "./api/api";
 import Button from "./Button";
 import Input from "./Input";
+import Loading from "./Loading";
 
 const AddUser = (props) => {
   const [userName, setUserName] = useState();
   const [userEmail, setUserEmail] = useState();
   const [userNumber, setUserNumber] = useState();
   const [password, setPassword] = useState();
-  const [status, setStatus] = useState();
+    const [status, setStatus] = useState();
+    const [loading, setLoading] = useState(false);
 
   
 
@@ -21,13 +23,18 @@ const AddUser = (props) => {
   };
   
 
-  const callUserAddApi = (event) => {
+    const callUserAddApi = (event) => {
+      setLoading(true)
     event.preventDefault();
     createUser(userDataObject).then((res) => {
-      setStatus(res);
+        setStatus(res);
+        setLoading(false)
       alert("User created");
     });
-  };
+    };
+    if (loading) {
+        return <Loading/>
+    }
 
   
   if (status) {
