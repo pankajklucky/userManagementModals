@@ -28,7 +28,7 @@ const AddUser = ({ setAlert}) => {
     createUser(userDataObject).then((res) => {
       setStatus(res);
       setLoading(false);
-        // alert("User created");
+        
         setAlert({type:'success',message:'welcome user data add'})
     });
   };
