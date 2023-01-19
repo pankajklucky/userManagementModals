@@ -36,7 +36,7 @@ const User = () => {
             {user &&
               user.map((item,i) => (
                 <>
-                      <tr className="">
+                      <tr className="" key={i}>
                           <td className="text-center font-bold text-indigo-600">{ i+1 }</td>
                     <td className=" font-bold text-red-500 text-center">
                       {item.name}

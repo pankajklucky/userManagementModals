@@ -18,12 +18,3 @@ export const getUserData = () =>
     .get("https://openuserapi.onrender.com/admin/users")
     .then((res) => res.data.list);
 
-// export const getId = (id) => {
-//     axios.get(`https://openuserapi.onrender.com/admin/user/${id}`).then((res)=>console.log("user id data", res.data.list))
-//     console.log("get id ", id,);
-    
-// };
-export const userUpadateData = () => {
-   
-    
-}
