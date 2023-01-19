@@ -4,46 +4,49 @@ import { createUser } from "./api/api";
 import Button from "./Button";
 import Input from "./Input";
 import Loading from "./Loading";
+import { withAlert } from "./providers/withProvider";
 
-const AddUser = (props) => {
+const AddUser = ({ setAlert}) => {
   const [userName, setUserName] = useState();
   const [userEmail, setUserEmail] = useState();
   const [userNumber, setUserNumber] = useState();
   const [password, setPassword] = useState();
-    const [status, setStatus] = useState();
-    const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState();
+  const [loading, setLoading] = useState(false);
 
-  
-
+    // console.log("props add user")
   const userDataObject = {
     name: userName,
     email: userEmail,
     phone: userNumber,
     password: password,
   };
-  
 
-    const callUserAddApi = (event) => {
-      setLoading(true)
+  const callUserAddApi = (event) => {
+    setLoading(true);
     event.preventDefault();
     createUser(userDataObject).then((res) => {
-        setStatus(res);
-        setLoading(false)
-      alert("User created");
+      setStatus(res);
+      setLoading(false);
+        // alert("User created");
+        setAlert({type:'success',message:'welcome user data add'})
     });
-    };
-    if (loading) {
-        return <Loading/>
-    }
+  };
+  if (loading) {
+    return <Loading />;
+  }
 
-  
   if (status) {
     return <Navigate replace to={"/user"} />;
   }
   return (
     <>
       <div className="flex flex-col w-min-full h-min-full mt-12 ">
-        <form onSubmit={callUserAddApi} autoComplete="on" className="flex flex-col gap-3 items-center justify-center">
+        <form
+          onSubmit={callUserAddApi}
+          autoComplete="on"
+          className="flex flex-col gap-3 items-center justify-center"
+        >
           <Input
             placeholder={"input user name"}
             type={"text"}
@@ -69,11 +72,11 @@ const AddUser = (props) => {
             onChange={(e) => setPassword(e.target.value)}
           />
 
-         <Button>add</Button>
+          <Button>add</Button>
         </form>
       </div>
     </>
   );
 };
 
-export default AddUser;
+export default withAlert(AddUser) ;

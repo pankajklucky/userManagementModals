@@ -4,8 +4,9 @@ import { Navigate } from "react-router-dom";
 import Input from "./Input";
 import Loading from "./Loading";
 import Button from "./Button";
+import { withAlert } from "./providers/withProvider";
 
-const UserEditPage = (props) => {
+const UserEditPage = ({ setAlert}) => {
   const [updateUserName, setUpdateUserName] = useState();
   const [updateUserEmail, setUpdateUserEmail] = useState();
   const [updateUserNumber, setUpdateUserNumber] = useState();
@@ -53,8 +54,9 @@ const UserEditPage = (props) => {
         )
         .then((res) => {
           setUserStates(res.status);
-          setLoading(false);
-          alert("Profile update");
+            setLoading(false);
+            setAlert({type:'success',message:'Profile updated'})
+        
         });
     }
   };
@@ -107,4 +109,4 @@ const UserEditPage = (props) => {
   );
 };
 
-export default UserEditPage;
+export default withAlert(UserEditPage);
