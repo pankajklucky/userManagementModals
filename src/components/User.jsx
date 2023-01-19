@@ -46,9 +46,11 @@ const User = () => {
                       {item.phone}
                     </td>
                     <td className="text-center">{item.updatedAt}</td>
-                    <td className=" text-green-500 font-semibold text-center">
-                      {item.status + ""}
-                    </td>
+                   { (item.status+""=="true")? <td className=" text-green-500 font-semibold text-center">
+                   {item.status + ""}
+                 </td>: <td className=" text-red-500 font-semibold text-center">
+                 {item.status + ""}
+               </td>}
                     <td>
                       <button
                         className="text-center" onClick={() => localStorage.setItem("id", item._id)}

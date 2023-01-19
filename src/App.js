@@ -2,9 +2,10 @@
 import './App.css';
 import AddUser from './components/AddUser';
 import User from './components/User';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import {  Route, Routes } from 'react-router-dom';
 import UserEditPage from './components/UserEditPage';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 function App() {
   // const id = localStorage.getItem("id");
@@ -17,6 +18,7 @@ function App() {
         <Route path='/user/add' element={<AddUser />} />
         <Route path={"/user/edit/:id"} element={<UserEditPage />} />
       </Routes>
+      <Footer/>
     </>
     )
 }
