@@ -60,9 +60,9 @@ const UserEditPage = ({ setAlert}) => {
         });
     }
   };
-
+  
   if (loading) {
-    return <Loading />;
+    return (!updatedata)? <Loading  info={"Loading User Data..."}/>: <Loading  info={"Updating User Data..."}/>;
   }
   return (
     <>

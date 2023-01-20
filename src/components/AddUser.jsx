@@ -33,7 +33,7 @@ const AddUser = ({ setAlert}) => {
     });
   };
   if (loading) {
-    return <Loading />;
+    return <Loading info={"Adding User Data..."} />;
   }
 
   if (status) {

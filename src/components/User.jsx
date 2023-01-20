@@ -15,7 +15,7 @@ const User = () => {
   }, []);
 
   if (loading) {
-    return <Loading />;
+    return <Loading info={"Loading Data...."} />;
   }
   return (
     <>
